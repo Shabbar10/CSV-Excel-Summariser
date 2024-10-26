@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import dj_database_url
 import os
 from pathlib import Path
 
@@ -84,6 +85,8 @@ DATABASES = {
     }
 }
 
+db_url = config("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(db_url)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
